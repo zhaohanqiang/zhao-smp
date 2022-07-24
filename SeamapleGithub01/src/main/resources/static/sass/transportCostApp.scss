@@ -1,0 +1,137 @@
+#app {
+  width: 95%;
+  max-width: 95%;
+  margin: 40px auto;
+  padding: 14px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  box-shadow: 2px 2px 5px 0px rgba(200, 200, 200, 1);
+  font-family: "Times New Roman";
+}
+
+.table {
+  display: table;
+  width: 100%;
+
+  thead {
+    tr {
+      th {
+        padding: 8px;
+        text-align: left;
+        font-size: 12px;
+        color: #fff;
+        background-color: #384878;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #bcbcbc;
+
+      td {
+        display: table-cell;
+        padding: 8px;
+
+        input {
+          width: 100%;
+        }
+
+        select {
+          padding: 5px;
+        }
+
+        button {
+          border: 0;
+          border-radius: 5px;
+          box-shadow: none;
+          color: #fff;
+          cursor: pointer;
+          background-color: #e6e6e6;
+
+          &.del {
+            &.active {
+              background-color: red;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.buttons {
+  margin: 20px 0;
+
+  button {
+    border: 0;
+    border-radius: 5px;
+    box-shadow: none;
+    cursor: pointer;
+    background-color: #e6e6e6;
+  }
+}
+
+.reset {
+  padding: 5px;
+
+  &.active {
+    color: #fff;
+    background-color: skyblue;
+  }
+}
+
+.savetmp {
+  &.active {
+    color: #fff;
+    background-color: orange;
+  }
+}
+
+.confirm {
+  &.active {
+    color: #fff;
+    background-color: rgb(185, 147, 19);
+  }
+}
+
+.insert {
+  &.active {
+    color: #fff;
+    background-color: rgb(105, 108, 114);
+  }
+}
+
+.add {
+  &.active {
+    color: #fff;
+    background-color: #27c200;
+  }
+}
+
+.type {
+  padding: 3px 0px;
+  vertical-align: middle;
+}
+
+.displayDate {
+  font-size: 48px;
+}
+
+// 在宅申請ボタン 初期表示 非活性
+#homeFormButton {
+  display: none;
+}
+
+// スマホ時active
+.mobile {
+  button {
+    font-size: 10px;
+  }
+
+  .search {
+    width: 60%;
+  }
+}

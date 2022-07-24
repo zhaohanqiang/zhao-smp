@@ -1,0 +1,68 @@
+#title {
+  margin: 10px auto;
+}
+
+.table {
+  display: table;
+  width: 100%;
+
+  thead {
+    tr {
+      th {
+        padding: 8px;
+        font-size: 12px;
+        color: #fff;
+        background-color: #00c2be;
+        white-space: nowrap;
+
+        &.last {
+          width: 10px;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #bcbcbc;
+
+      td {
+        display: table-cell;
+        padding: 8px;
+
+        &.last {
+          width: 10px;
+        }
+
+        button {
+          border: 0;
+          border-radius: 5px;
+          box-shadow: none;
+          color: #fff;
+          cursor: pointer;
+
+          &.edit {
+            background-color: green;
+            white-space: nowrap;
+          }
+
+          &.del {
+            background-color: red;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
+// スマホ時active
+.mobile {
+  button {
+    font-size: 10px;
+  }
+
+  .search {
+    width: 60%;
+  }
+}

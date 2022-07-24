@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headerで置き換える -->
+<head th:replace="common :: meta_header('社員情報画面 社員新規登録',~{::link},~{::script})">
+    <!-- このページ固有で読み込むCSS/JS -->
+    <title>入社連絡票登録</title>
+</head>
+<body>
+<!-- common.html -->
+<div th:replace="common :: header"></div>
+<h1 class="mt-2 mb-3" style="text-align: center">入社連絡票登録</h1>
+<!-- Page Content -->
+<form method="post"
+      sec:authorize="hasRole('ADMIN')"
+      th:action="@{/userList}">
+    <button style="margin-left: 50px" class="btn btn-primary ml-3 form-group" type="submit">戻る</button>
+</form>
+    <form method="post" th:action="@{/createContact}"  th:object="${userDetailForm}">
+        <input type="text" th:field="*{userId}" style="display: none">
+        <table  id="tb_table" align="center" class="table  table-responsive table-striped table-bordered" valign="center">
+            <tbody style="width:60%;">
+            <tr>
+                <td class="column" colspan="2">フリガナ</td>
+                <td class="value" colspan="2" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('furigana')} ? 'has-error'">
+                        <input class="form-control" th:field="*{furigana}" type="text"/>
+                        <span class="text-danger" th:errors="*{furigana}"
+                              th:if="${#fields.hasErrors('furigana')}"></span>
+                    </div>
+                </td>
+                <td class="column" colspan="2">生年月日<br>（西暦）</td>
+                <td class="value" colspan="2" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('birthday')} ? 'has-error'">
+                        <input id="date2" type="date"  class="form-control"placeholder="例:2022-01-01" th:field="*{birthday}" />
+                        <span class="text-danger" th:errors="*{birthday}"
+                              th:if="${#fields.hasErrors('birthday')}"></span>
+                    </div>
+                </td>
+                <td class="column" colspan="1">性別</td>
+                <td class="value" colspan="1" style="background-color: white">
+                        <select name="sex">
+                            <option th:selected="${{userSex}} eq '男'" value="男">男</option>
+                            <option th:selected="${{userSex}} eq '女'" value="女">女</option>
+                        </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">氏名</td>
+                <td class="value" colspan="2">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'has-error'">
+                    <input class="form-control" th:field="*{userName}" type="text"/>
+                    <span class="text-danger" th:errors="*{userName}"
+                          th:if="${#fields.hasErrors('userName')}"></span>
+                </td>
+                <td class="column" colspan="2">氏名（英語）</td>
+                <td class="column">（名）</td>
+                <td class="value" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('firstname')} ? 'has-error'">
+                        <input class="form-control" th:field="*{firstname}" type="text"/>
+                        <span class="text-danger" th:errors="*{firstname}"
+                              th:if="${#fields.hasErrors('firstname')}"></span>
+                    </div>
+                </td>
+                <td class="column">（姓）</td>
+                <td class="value">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('lastname')} ? 'has-error'">
+                        <input class="form-control" th:field="*{lastname}" type="text"/>
+                        <span class="text-danger" th:errors="*{lastname}"
+                              th:if="${#fields.hasErrors('lastname')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">郵便番号</td>
+                <td class="value" colspan="8" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('postcode')} ? 'has-error'">
+                        <input class="form-control" placeholder="例:000-0000" th:field="*{postcode}" type="text"/>
+                        <span class="text-danger" th:errors="*{postcode}"
+                              th:if="${#fields.hasErrors('postcode')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">住所</td>
+                <td class="value" colspan="8">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('address')} ? 'has-error'">
+                        <input class="form-control" th:field="*{address}" type="text"/>
+                        <span class="text-danger" th:errors="*{address}" th:if="${#fields.hasErrors('address')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">携帯</td>
+                <td class="value" colspan="3" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? 'has-error'">
+                        <input class="form-control" placeholder="例:000-0000-0000"th:field="*{phone}" type="text"/>
+                        <span class="text-danger" th:errors="*{phone}" th:if="${#fields.hasErrors('phone')}"></span>
+                    </div>
+                </td>
+                <td class="column" colspan="2">個人メール</td>
+                <td class="value" colspan="3" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('mail')} ? 'has-error'">
+                        <input class="form-control" placeholder="例:xxxx@xxxx.xxx" th:field="*{mail}" type="text"/>
+                        <span class="text-danger" th:errors="*{mail}" th:if="${#fields.hasErrors('mail')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">在留資格</td>
+                <td class="value" colspan="2">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('stay')} ? 'has-error'">
+                        <input class="form-control" th:field="*{stay}" type="text"/>
+                        <span class="text-danger" th:errors="*{stay}" th:if="${#fields.hasErrors('stay')}"></span>
+                    </div>
+                </td>
+                <td class="column" >在留期間</td>
+                <td class="value" >
+                    <div class="form-group" th:classappend="${#fields.hasErrors('time')} ? 'has-error'">
+                        <input class="form-control" th:field="*{time}" type="text"/>
+                        <span class="text-danger" th:errors="*{time}" th:if="${#fields.hasErrors('time')}"></span>
+                    </div>
+                </td>
+                <td class="column" colspan="1">有効期限</td>
+                <td class="value" colspan="1">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('limit')} ? 'has-error'">
+                        <input class="form-control" th:field="*{limit}"id="date3" type="date"/>
+                        <span class="text-danger" th:errors="*{limit}" th:if="${#fields.hasErrors('limit')}"></span>
+                    </div>
+                </td>
+                <td class="column" colspan="1">国籍</td>
+                <td class="value" colspan="3">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('contory')} ? 'has-error'">
+                        <input class="form-control" th:field="*{contory}" type="text"/>
+                        <span class="text-danger" th:errors="*{contory}" th:if="${#fields.hasErrors('contory')}"></span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tr>
+                <td colspan="2" style="background-color: white;font-size: 18px"><span>◇緊急連絡先</span></td>
+                <td colspan="8" style="background-color: white;font-size: 18px"><span style="color: red">緊急連絡先は必ず登録してください。</span></td>
+            </tr>
+            <tbody>
+
+            <tr>
+                <td class="column" colspan="2">氏名</td>
+                <td class="value" colspan="2" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('fm_name')} ? 'has-error'">
+                        <input  class="form-control" th:field="*{fm_name}" type="text"/>
+                        <span class="text-danger" th:errors="*{fm_name}"
+                              th:if="${#fields.hasErrors('fm_name')}"></span>
+                    </div>
+                </td>
+                <td class="column" colspan="2">続柄</td>
+                <td class="value" colspan="4" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('fm_relation')} ? 'has-error'">
+                        <input class="form-control" th:field="*{fm_relation}" type="text"/>
+                        <span class="text-danger" th:errors="*{fm_relation}"
+                              th:if="${#fields.hasErrors('fm_relation')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">郵便番号</td>
+                <td class="value" colspan="8">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('fm_postcode')} ? 'has-error'">
+                        <input placeholder="例:000-0000" class="form-control" th:field="*{fm_postcode}" type="text"/>
+                        <span class="text-danger" th:errors="*{fm_postcode}"
+                              th:if="${#fields.hasErrors('fm_postcode')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">住所</td>
+                <td class="value" colspan="8" style="background-color: white">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('fm_address')} ? 'has-error'">
+                        <input class="form-control" th:field="*{fm_address}" type="text"/>
+                        <span class="text-danger" th:errors="*{fm_address}"
+                              th:if="${#fields.hasErrors('fm_address')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="column" colspan="2">TEL</td>
+                <td class="value" colspan="3">
+                    <div class="form-group">
+                        <input class="form-control" th:field="*{fm_tel}" type="text"/>
+
+                    </div>
+                </td>
+                <td class="column" colspan="2">携帯</td>
+                <td class="value" colspan="3">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('fm_phone')} ? 'has-error'">
+                        <input class="form-control" placeholder="例:000-0000-0000" th:field="*{fm_phone}" type="text"/>
+                        <span class="text-danger" th:errors="*{fm_phone}"
+                              th:if="${#fields.hasErrors('fm_phone')}"></span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tr>
+                <td  colspan="2" style="background-color: white;font-size: 18px"><span siz>◇扶養家族</span></td>
+                <td colspan="4" style="background-color: white;font-size: 18px"><span>扶養家族がいますか。</span></td>
+                <td colspan="2" style="background-color: white"　><input type="radio" onclick="enabledByClassName()" name="fy"  id="iru"   checked> <label for="iru">はい</label></td>
+                <td colspan="2" style="background-color: white"　><input type="radio" onclick="disabledByClassName()" name="fy"id="inai"  > <label for="inai">いいえ</label></td>
+            </tr>
+            <tbody id="feetbody">
+
+            <tr>
+                <td class="column">氏名</td>
+                <td class="column">フリガナ</td>
+                <td class="column">続柄</td>
+                <td class="column">生年月日<br>(西暦)</td>
+                <td class="column">性別</td>
+                <td class="column">収入(万円)</td>
+                <td class="column"  colspan="3">住所(別居の場合)</td>
+                <td class="column" colspan="1"></td>
+            </tr>
+            <tr class="fyList" th:if="${fyList.size()<1}"  >
+                <td class="value">
+                    <input class="form-control" th:value="${fm_nameb}" name="nameb" required    type="text"/>
+                </td>
+                <td class="value" >
+                    <input class="form-control" th:value="${fm_furigana}" name="furiganab" required  type="text"/>
+                </td>
+                <td class="value" >
+                    <input class="form-control" th:value="${fm_relationb}" name="relataionb" required type="text"/>
+                </td>
+                <td class="value" >
+                    <input id="date" type="date" th:value="${fm_nameb}" required="required" class="form-control" name="birth" 　/>
+                </td>
+                <td class="value" >
+                    <input class="form-control" th:value="${fm_sex}" name="sexb" required="required" type="text"/>
+                </td>
+                <td class="value" >
+                    <input class="form-control" th:value="${fm_money}" name="money" required="required"  type="number"/>
+                </td>
+                <td class="value"  colspan="3">
+                    <input class="form-control" th:value="${fm_addressb}" name="addressb"　 placeholder="例:同上"　 required type="text"/>
+                </td >
+                <td  class="value" colspan="1">
+
+                    <input type="button" value="削除" class="btn btn-primary mb-3"  onclick="del(this)">
+
+                </td>
+            </tr>
+            <tr class="fyList" th:if="${fyList.size()>=1}" th:each="f : ${fyList}" th:object="${userFmForm}"  >
+                <td class="value">
+                    <input class="form-control" name="nameb" th:value="${f.fm_name}" required type="text"/>
+                </td>
+                <td class="value" >
+                    <input class="form-control" name="furiganab" th:value="${f.fm_furigana}"required type="text"/>
+                </td>
+                <td class="value" >
+                    <input class="form-control" name="relataionb" th:value="${f.fm_relation}" requiredtype="text"/>
+                </td>
+                <td class="value" >
+                    <input id="date1" type="date"  class="form-control" name="birth" th:value="${f.fm_birth}" required/>
+                </td>
+                <td class="value" >
+                    <input class="form-control" name="sexb" th:value="${f.fm_sex}"required  type="text"/>
+                </td>
+
+                <td class="value" >
+                    <input class="form-control"name="money" th:value="${f.fm_money}" required="required" type="number"/>
+                </td>
+                <td class="value"  colspan="3">
+                    <input class="form-control" name="addressb"　placeholder="例:同上" required th:value="${f.fm_address}"  type="text"/>
+                </td >
+                <td  class="value" colspan="1">
+                    <input type="button" value="削除" class="btn btn-primary mb-3"  onclick="del(this)">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin-left:70%;margin-top: 3%" >
+            <input type="button" value="行新規" class="btn btn-primary mb-3"  onclick="add()">
+        </div>
+        <div style="width: 60%;">
+        <textarea rows="5" cols="100" size="20" style="margin-left: 35%;width: 100%;font-size:larger" readonly>
+            ※必要書類　   16歳から60歳までの方(同居の配偶者と高校生以外）→在学証明書か非課税証明書
+                   　　　       20歳以上60歳未満の被扶養配偶者→年金手帳
+                   　　　       別居の場合は、仕送り証明
+                   　　　       その他必要な書類のある場合は別途ご連絡します
+        </textarea>
+        </div>
+        <div  style="margin-left:70%" >
+            <button  class="btn btn-primary mb-3"　 type="submit">登録</button>
+        </div>
+    </form>
+</div>
+<!-- /container -->
+<div th:replace="common :: scripts"></div>
+
+</body>
+<style>
+
+    .table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        background-color: transparent;
+        display: table;
+        width: 80%;
+        margin: 0 auto;
+        display: table;
+
+    }
+
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+        font-size: 14px;
+        font-family: 'Arial Normal', 'Arial';
+        color: #333333;
+        padding: 8px 12px;
+        margin: 0 auto;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .column {
+
+        border: 1px solid #333;
+        background: #f1f1f1;
+    }
+
+    .value {
+
+        border: 1px solid #333;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script th:inline="javascript">
+    function add() {
+        let addline = $("table tbody tr:last").clone();
+        addline.find('input:text').val('');
+        $("table tbody:last").append(addline);
+    }
+    function del(obj) {
+        if ($('#tb_table tbody tr').length > 14) {
+
+            //通过this找到父级元素节点
+            var tr = obj.parentNode.parentNode;
+            //找到表格
+            var tbody = tr.parentNode;
+            //删除行
+            tbody.removeChild(tr);
+        }
+
+    }
+
+     $(".fyList input").attr("disabled" ,false);
+    function enabledByClassName(){
+        $(".fyList input").attr("disabled" ,false);
+    }
+    function disabledByClassName(){
+        $(".fyList input").attr("disabled" ,"disabled");
+    }
+
+
+</script>
+</html>

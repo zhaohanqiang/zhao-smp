@@ -1,0 +1,51 @@
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-09 11:25:29.886
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.RTzEpQnr
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-09 11:25:29.887
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.RTzEpQnr
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-09 11:25:29.888
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-09 11:25:29.888
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.RTzEpQnr => OK
+
+!ENTRY org.eclipse.core.resources 4 566 2021-11-09 11:25:30.744
+!MESSAGE マスター・テーブルをファイル 'C:\Users\safu1\git\SeamapleGithub01\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources.bak' に保存できませんでした。
+!STACK 0
+java.io.FileNotFoundException: C:\Users\safu1\git\SeamapleGithub01\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources.bak (指定されたパスが見つかりません。)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1265)
+	at org.eclipse.core.internal.resources.SaveManager.cleanMasterTable(SaveManager.java:240)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1173)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2333)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:509)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY org.eclipse.ui.ide 4 4 2021-11-09 11:25:33.558
+!MESSAGE ワークスペースの保存の問題
+
+!ENTRY org.eclipse.ui.ide 4 1 2021-11-09 11:25:33.559
+!MESSAGE ワークベンチの状態を保存中に問題が発生しました。
+!SUBENTRY 1 org.eclipse.core.resources 4 566 2021-11-09 11:25:33.559
+!MESSAGE マスター・テーブルをファイル 'C:\Users\safu1\git\SeamapleGithub01\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources' に保存できませんでした。
+!STACK 0
+java.io.FileNotFoundException: C:\Users\safu1\git\SeamapleGithub01\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (指定されたパスが見つかりません。)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:44)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1265)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2333)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:509)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)

@@ -1,0 +1,18 @@
+CREATE TABLE `m_usermore` (
+  `um_id` varchar(50) NOT NULL COMMENT '社員番号',
+  `um_furigana` varchar(50) DEFAULT NULL COMMENT 'フリガナ',
+  `um_birth` varchar(50) DEFAULT NULL COMMENT '誕生日',
+  `um_lastname` varchar(50) DEFAULT NULL COMMENT '英語名',
+  `um_firstname` varchar(50) DEFAULT NULL COMMENT '英語姓',
+  `um_postcode` varchar(50) DEFAULT NULL COMMENT '郵便番号',
+  `um_address` varchar(255) DEFAULT NULL COMMENT '住所',
+  `um_phone` varchar(50) DEFAULT NULL COMMENT '携帯',
+  `um_stay` varchar(50) DEFAULT NULL COMMENT '在留資格',
+  `um_time` varchar(50) DEFAULT NULL COMMENT '在留期間',
+  `um_limit` varchar(50) DEFAULT NULL COMMENT '有効期限',
+  `um_contory` varchar(50) DEFAULT NULL COMMENT '国籍',
+  `um_mail` varchar(45) DEFAULT NULL COMMENT '個人メール',
+  `um_sex` varchar(45) DEFAULT NULL COMMENT '性別',
+  `um_name` varchar(45) NOT NULL '社員氏名',
+  PRIMARY KEY (`um_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

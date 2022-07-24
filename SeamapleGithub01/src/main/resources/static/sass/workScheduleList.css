@@ -1,0 +1,68 @@
+#title {
+    margin: 10px auto;
+}
+
+p {
+    margin: 10px auto;
+}
+
+.table {
+    display: table;
+    width: 100%;
+}
+
+.table thead tr th {
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00c2be;
+    white-space: nowrap;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #bcbcbc;
+}
+
+.table tbody tr td {
+    display: table-cell;
+    padding: 10px;
+}
+
+.table tbody tr td button {
+    border: 0;
+    border-radius: 5px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.table tbody tr td button.view {
+    background-color: blue;
+    white-space: nowrap;
+}
+
+.table tbody tr td button.dl {
+    background-color: green;
+    white-space: nowrap;
+}
+
+.table tbody tr td button.delete {
+    background-color: red;
+    white-space: nowrap;
+}
+
+.table tbody tr td button.openMemo {
+    background-color: gray;
+    white-space: nowrap;
+}
+
+.mobile button {
+    font-size: 10px;
+}
+
+.mobile .search {
+    width: 60%;
+}
+
+/*# sourceMappingURL=workScheduleList.css.map */

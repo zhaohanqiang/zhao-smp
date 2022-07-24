@@ -1,0 +1,17 @@
+CREATE TABLE `m_userfm` (
+  `user_fmid` varchar(50) NOT NULL COMMENT '社員番号',
+  `fm_furigana` varchar(50) DEFAULT NULL COMMENT 'フリガナ',
+  `fm_birth` date DEFAULT NULL COMMENT '誕生日',
+  `fm_name` varchar(50) DEFAULT NULL COMMENT '名前',
+  `fm_postcode` varchar(50) DEFAULT NULL COMMENT '郵便番号',
+  `fm_address` varchar(255) DEFAULT NULL COMMENT '住所',
+  `fm_tel` varchar(50) DEFAULT NULL COMMENT 'TEL',
+  `fm_phone` varchar(50) DEFAULT NULL COMMENT '携帯',
+  `fm_relation` varchar(50) DEFAULT NULL COMMENT '続柄',
+  `fm_sex` varchar(50) DEFAULT NULL COMMENT '性別',
+  `fm_job` varchar(50) DEFAULT NULL COMMENT '職業',
+  `fm_money` int DEFAULT NULL COMMENT '収入',
+  `fm_id` int NOT NULL AUTO_INCREMENT COMMENT '家族のＩＤ',
+  `fm_status` varchar(45) NOT NULLCOMMENT '緊急連絡先かどうか判断',
+  PRIMARY KEY (`fm_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=524 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headerで置き換える -->
+
+<head th:replace="common :: meta_header('有給情報画面 有給申請',~{::link},~{::script})">
+    <!-- このページ固有で読み込むCSS/JS -->
+    <title>有給申請</title>
+</head>
+
+<body>
+    <!-- common.html -->
+    <div th:replace="common :: header"></div>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="page-header mt-3">
+            <h1>休暇申請</h1>
+            <p class="text-secondary">有給: <span class="text-danger" th:text="${allPaidVacation}"></span> 夏季休暇:
+                <span class="text-danger" th:text="${summerVacation}"></span>
+            </p>
+            <p class="text-secondary">次回失効有給: <span class="text-danger" th:text=${lostVacationNum}></span> 次回失効日: <span
+                    class="text-danger" th:text="${lostVacationDate}"></span></p>
+        </div>
+        <div class="col-form-label">
+            <p class="text-danger" th:text="${errorMessage}"></p>
+        </div>
+        <form method="post" th:action="@{/vacationApp/insert}" th:object="${vacationappForm}">
+            <table aria-label class="table table-bordered table-hover table-sm">
+                <tr>
+                    <th class="active align-middle text-center text-nowrap" id="vacationType" scope="row">休暇種別</th>
+                    <td>
+                        <div class="form-group mt-3"
+                            th:classappend="${#fields.hasErrors('vacationAppType')} ? 'has-error'">
+                            <select class="form-control mt-3" name="vacationAppType">
+                                <option th:each="vacationAppType : ${vacationAppTypes}" th:object="${vacationAppType}"
+                                    th:text="*{vacationAppType}" th:value="${vacationAppType.vacationAppType}">
+                                </option>
+                            </select>
+                            <span class="text-danger" th:errors="*{vacationAppType}"
+                                th:if="${#fields.hasErrors('vacationAppType')}"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="active align-middle text-center text-nowrap" id="vacationappDate" scope="row">休暇日程</th>
+                    <td>
+                        <div class="form-group mt-3"
+                            th:classappend="${#fields.hasErrors('vacationappDate')} ? 'has-error'">
+                            <input class="form-control" th:field="*{vacationappDate}" type="date">
+                        </div>
+                        <span class="text-danger" th:errors="*{vacationappDate}"
+                            th:if="${#fields.hasErrors('vacationappDate')}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="active align-middle text-center text-nowrap" id="vacationapp_comment" scope="row">コメント
+                    </th>
+                    <td>
+                        <div class="form-group mt-3"
+                            th:classappend="${#fields.hasErrors('vacationappComment')} ? 'has-error'">
+                            <textarea class="form-control" cols="40" name="vacationappComment" placeholder="休暇理由など記入"
+                                rows="5" th:value=${vacationappComment}></textarea>
+                            <span class="text-danger" th:errors="*{vacationappComment}"
+                                th:if="${#fields.hasErrors('vacationappComment')}"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="text-right">
+                <button class="btn btn-primary mb-3" id="register" type="submit">登録</button>
+            </div>
+        </form>
+    </div>
+    <div th:replace="common :: scripts"></div>
+    <!-- /container -->
+</body>
+
+</html>

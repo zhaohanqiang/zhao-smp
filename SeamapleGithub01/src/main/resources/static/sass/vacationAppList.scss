@@ -1,0 +1,27 @@
+#vacationTable {
+  thead tr th {
+    color: #fff;
+    background-color: #00c2be;
+    font-size: 14px;
+  }
+
+  td {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 3px 5px;
+  }
+}
+
+// ステータスボタン初期 非活性
+button {
+  &.approval {
+    display: none;
+  }
+
+  &.dismiss {
+    display: none;
+  }
+}

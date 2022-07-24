@@ -1,0 +1,23 @@
+#userTable {
+  width: 100%;
+
+  thead tr th {
+    color: #fff;
+    background-color: #00c2be;
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 10px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 3px 5px;
+  }
+}
+
+// テーブルソートの背景が優先されるため、透明化
+.tablesorter tr[style] td {
+  background: transparent;
+}

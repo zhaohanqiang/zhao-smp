@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+    <item key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel" value="2"/>
+    <list key="RepositorySelectionPage.UsedUris">
+        <item value="https://github.com/Seamaple88/SeamapleGithub01.git"/>
+    </list>
+    <list key="EGit.KnownHosts">
+        <item value="bitbucket.org"/>
+        <item value="git.eclipse.org"/>
+        <item value="github.com"/>
+    </list>
+    <section name="GitImportWizard">
+    </section>
+    <section name="org.eclipse.egit.ui.internal.dialogs.ReplaceTargetSelectionDialog.dialogBounds">
+        <item key="DIALOG_X_ORIGIN" value="340"/>
+        <item key="DIALOG_Y_ORIGIN" value="66"/>
+        <item key="DIALOG_WIDTH" value="613"/>
+        <item key="DIALOG_HEIGHT" value="480"/>
+        <item key="DIALOG_FONT_NAME" value="1|Yu Gothic UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Yu Gothic UI"/>
+    </section>
+</section>

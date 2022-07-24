@@ -1,0 +1,24 @@
+#userTable {
+    width: 100%;
+}
+
+#userTable thead tr th {
+    color: #fff;
+    background-color: #00c2be;
+    font-size: 12px;
+}
+
+#userTable td {
+    font-size: 10px;
+}
+
+#userTable button {
+    font-size: 12px;
+    padding: 3px 5px;
+}
+
+.tablesorter tr[style] td {
+    background: transparent;
+}
+
+/*# sourceMappingURL=userList.css.map */

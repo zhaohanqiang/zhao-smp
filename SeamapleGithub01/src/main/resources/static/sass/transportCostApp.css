@@ -1,0 +1,122 @@
+#app {
+    width: 95%;
+    max-width: 95%;
+    margin: 40px auto;
+    padding: 14px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: transparent;
+    -webkit-box-shadow: 2px 2px 5px 0px #c8c8c8;
+    box-shadow: 2px 2px 5px 0px #c8c8c8;
+    font-family: "Times New Roman";
+}
+
+.table {
+    display: table;
+    width: 100%;
+}
+
+.table thead tr th {
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+    color: #fff;
+    background-color: #384878;
+    white-space: nowrap;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #bcbcbc;
+}
+
+.table tbody tr td {
+    display: table-cell;
+    padding: 8px;
+}
+
+.table tbody tr td input {
+    width: 100%;
+}
+
+.table tbody tr td select {
+    padding: 5px;
+}
+
+.table tbody tr td button {
+    border: 0;
+    border-radius: 5px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #e6e6e6;
+}
+
+.table tbody tr td button.del.active {
+    background-color: red;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+.buttons button {
+    border: 0;
+    border-radius: 5px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    background-color: #e6e6e6;
+}
+
+.reset {
+    padding: 5px;
+}
+
+.reset.active {
+    color: #fff;
+    background-color: skyblue;
+}
+
+.savetmp.active {
+    color: #fff;
+    background-color: orange;
+}
+
+.confirm.active {
+    color: #fff;
+    background-color: #b99313;
+}
+
+.insert.active {
+    color: #fff;
+    background-color: #696c72;
+}
+
+.add.active {
+    color: #fff;
+    background-color: #27c200;
+}
+
+.type {
+    padding: 3px 0px;
+    vertical-align: middle;
+}
+
+.displayDate {
+    font-size: 48px;
+}
+
+#homeFormButton {
+    display: none;
+}
+
+.mobile button {
+    font-size: 10px;
+}
+
+.mobile .search {
+    width: 60%;
+}
+
+/*# sourceMappingURL=transportCostApp.css.map */

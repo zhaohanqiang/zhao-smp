@@ -1,0 +1,24 @@
+#vacationTable thead tr th {
+    color: #fff;
+    background-color: #00c2be;
+    font-size: 14px;
+}
+
+#vacationTable td {
+    font-size: 12px;
+}
+
+#vacationTable button {
+    font-size: 12px;
+    padding: 3px 5px;
+}
+
+button.approval {
+    display: none;
+}
+
+button.dismiss {
+    display: none;
+}
+
+/*# sourceMappingURL=vacationAppList.css.map */

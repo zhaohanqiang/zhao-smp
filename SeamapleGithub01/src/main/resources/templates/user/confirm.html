@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headerで置き換える -->
+<head th:replace="common :: meta_header('社員情報画面 社員新規登録',~{::link},~{::script})">
+    <!-- このページ固有で読み込むCSS/JS -->
+    <title>入社連絡票登録</title>
+</head>
+<body>
+<!-- common.html -->
+<div th:replace="common :: header"></div>
+<!-- Page Content -->
+<h1 class="mt-2 mb-3" style="text-align: center">入社連絡票登録</h1>
+<form method="post" th:action="@{/confirm}"  th:object="${userDetailForm}">
+    <table id="tb_table" align="center" class="table table-striped table-bordered" valign="center">
+        <tbody style="width:60%;">
+        <tr>
+            <td class="column" colspan="2">フリガナ</td>
+            <td class="value"colspan="2" th:text="*{furigana}" type="text"></td>
+            <td class="column" colspan="1">生年月日<br>（西暦）</td>
+            <td class="value" colspan="2" th:text="*{birthday}" style="background-color: white"></td>
+            <td class="column" colspan="1">性別</td>
+            <td class="value" colspan="2" th:text="*{sex}" style="background-color: white"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">氏名</td>
+            <td class="value" colspan="2" th:text="*{userName}"></td>
+            <td class="column" colspan="2">氏名（英語）</td>
+            <td class="column">（名）</td>
+            <td class="value" th:text="*{firstname}" style="background-color: white"></td>
+            <td class="column">（姓）</td>
+            <td class="value" th:text="*{lastname}"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">郵便番号</td>
+            <td class="value" th:text="*{postcode}" colspan="8" style="background-color: white"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">住所</td>
+            <td class="value" th:text="*{address}" colspan="8"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">携帯</td>
+            <td class="value" th:text="*{phone}" colspan="3" style="background-color: white"></td>
+            <td class="column" colspan="2">個人メール</td>
+            <td class="value" th:text="*{mail}" colspan="3" style="background-color: white"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">在留資格</td>
+            <td class="value" th:text="*{stay}" colspan="2"></td>
+            <td class="column" >在留期間</td>
+            <td class="value" th:text="*{time}" ></td>
+            <td class="column" colspan="1">有効期限</td>
+            <td class="value" th:text="*{limit}" colspan="1"></td>
+            <td class="column" colspan="1">国籍</td>
+            <td class="value" th:text="*{contory}" colspan="3"></td>
+        </tr>
+        </tbody>
+        <tr>
+            <td colspan="2" style="background-color: white;font-size: 18px"><span>◇緊急連絡先</span></td>
+            <td colspan="8" style="background-color: white;font-size: 18px"><span style="color: red">緊急連絡先は必ず登録してください。</span></td>
+        </tr>
+        <tbody>
+        <tr>
+            <td class="column" colspan="2">氏名</td>
+            <td class="value" th:text="*{fm_name}" colspan="2" style="background-color: white"></td>
+            <td class="column" colspan="2">続柄</td>
+            <td class="value" th:text="*{fm_relation}" colspan="4" style="background-color: white"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">郵便番号</td>
+            <td class="value" th:text="*{fm_postcode}" colspan="8"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">住所</td>
+            <td class="value" th:text="*{fm_address}" colspan="8" style="background-color: white"></td>
+        </tr>
+        <tr>
+            <td class="column" colspan="2">TEL</td>
+            <td class="value" th:text="*{fm_tel}" colspan="3"></td>
+            <td class="column" colspan="2">携帯</td>
+            <td class="value" th:text="*{fm_phone}" colspan="3"></td>
+        </tr>
+        </tbody>
+        <tr>
+            <td  colspan="2" style="background-color: white;font-size: 18px"><span siz>◇扶養家族</span></td>
+        </tr>
+        <tbody id="feetbody">
+        <tr>
+            <td class="column">氏名</td>
+            <td class="column">フリガナ</td>
+            <td class="column">続柄</td>
+            <td class="column">生年月日<br>(西暦)</td>
+            <td class="column">性別</td>
+            <td class="column">収入(万円)</td>
+            <td class="column"  colspan="4">住所(別居の場合)</td>
+        </tr>
+        <tr class="fyList" th:each="f : ${fyList}">
+            <td class="value" th:text="${f.fm_name}"></td>
+            <td class="value"  th:text="${f.fm_furigana}"></td>
+            <td class="value" th:text="${f.fm_relation}" ></td>
+            <td class="value" th:text="${f.fm_birth}" ></td>
+            <td class="value" th:text="${f.fm_sex}" ></td>
+            <td class="value" th:text="${f.fm_money}" ></td>
+            <td class="value"  th:text="${f.fm_address}" colspan="4"></td >
+        </tr>
+        </tbody>
+    </table>
+</form>
+<div style="margin-left:200px;margin-top:150px;max-height:50px" >
+        <a href="contact"><input type="button" class="btn btn-primary mb-3" value="キャンセル" ></a>
+        <a style="margin-left: 1050px"  href="menuSelect"><input type="button" class="btn btn-primary mb-3" value="確定"></a>
+</div>
+<!-- /container -->
+<div th:replace="common :: scripts"></div>
+
+</body>
+<style>
+
+    .table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        background-color: transparent;
+        display: table;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+        font-size: 14px;
+        font-family: 'Arial Normal', 'Arial';
+        color: #333333;
+        padding: 8px 12px;
+        margin: 0 auto;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .column {
+
+        border: 1px solid #333;
+        background: #f1f1f1;
+    }
+
+    .value {
+        background-color: white;
+        border: 1px solid #333;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headerで置き換える -->
+
+<head th:replace="common :: meta_header('社員情報画面 社員新規登録',~{::link},~{::script})">
+    <!-- このページ固有で読み込むCSS/JS -->
+    <title>社員新規登録</title>
+</head>
+
+<body>
+<!-- common.html -->
+<div th:replace="common :: header"></div>
+
+<!-- Page Content -->
+<div class="container">
+    <h1 class="mt-2 mb-3">ユーザー登録</h1>
+    <form method="post" th:action="@{/userRegister/insert}" th:object="${userRegisterForm}">
+        <table aria-label class="table table-bordered table-hover table-sm" id="userList">
+            <tr>
+                <th class="active col-sm-3 align-middle text-center" scope="row">
+                    社員番号
+                </th>
+                <td>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('userId')} ? 'has-error'">
+                        <input class="form-control" th:field="*{userId}" type="text"/>
+                        <span class="text-danger" th:errors="*{userId}" th:if="${#fields.hasErrors('userId')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="active col-sm-3 align-middle text-center" scope="row">
+                    パスワード
+                </th>
+                <td>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+                        <input class="form-control" th:field="*{password}" type="password"/>
+                        <span class="text-danger" th:errors="*{password}"
+                              th:if="${#fields.hasErrors('password')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="active col-sm-3 align-middle text-center" scope="row">
+                    氏名
+                </th>
+                <td>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'has-error'">
+                        <input class="form-control" th:field="*{userName}" type="text"/>
+                        <span class="text-danger" th:errors="*{userName}"
+                              th:if="${#fields.hasErrors('userName')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="active col-sm-3 align-middle text-center" scope="row">
+                    メールアドレス
+                </th>
+                <td>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('mailAddress')} ? 'has-error'">
+                        <input class="form-control" th:field="*{mailAddress}" type="text"/>
+                        <span class="text-danger" th:errors="*{mailAddress}"
+                              th:if="${#fields.hasErrors('mailAddress')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="active col-sm-3 align-middle text-center" scope="row">
+                    電話番号
+                </th>
+                <td>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('phoneNumber')} ? 'has-error'">
+                        <input class="form-control" placeholder="000-0000-0000" th:field="*{phoneNumber}" type="text"/>
+                        <span class="text-danger" th:errors="*{phoneNumber}"
+                              th:if="${#fields.hasErrors('phoneNumber')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="active col-sm-3 align-middle text-center" scope="row">
+                    入社年月日
+                </th>
+                <td>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('joinCompanyDate')} ? 'has-error'">
+                        <input class="form-control" th:field="*{joinCompanyDate}" type="date"/>
+                        <span class="text-danger" th:errors="*{joinCompanyDate}"
+                              th:if="${#fields.hasErrors('joinCompanyDate')}"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="active col-sm-3 align-middle text-center" scope="row">
+                    ユーザー権限
+                </th>
+                <td>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('roleId')} ? 'has-error'">
+                        <input checked id="general" name="roleId" type="radio" value="general">
+                        <label for="general">一般</label>
+                        <input id="admin" name="roleId" type="radio" value="admin">
+                        <label for="admin">管理者</label>
+                        <span class="text-danger" th:errors="*{roleId}" th:if="${#fields.hasErrors('roleId')}"></span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="text-right">
+            <button class="btn btn-primary mb-3" type="submit">登録</button>
+        </div>
+    </form>
+</div>
+<!-- /container -->
+<div th:replace="common :: scripts"></div>
+<script>
+    const $adminButton = document.getElementById('admin');
+    $adminButton.addEventListener('click', () => {
+        window.alert('管理者権限が設定されています');
+    })
+</script>
+</body>
+
+</html>
